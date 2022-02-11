@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
-      - uses: ./.github/actions/rubocop@main
+      - uses: ./.github/actions/rubocop.yml
         with:
           username: devUser
