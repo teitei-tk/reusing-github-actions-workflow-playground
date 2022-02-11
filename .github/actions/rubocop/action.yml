@@ -6,23 +6,24 @@ on:
       username:
         required: true
         type: string
+      ruby-version:
+        required: false
+        default: "3.0"
+        type: string
 
 jobs:
   lint:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby-version: [3.0]
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: check environment
-        run: echo ${{ env.environment  }}
+      - name: UserName
+        run: echo ${{ inputs.username }}
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby-version }}
+          ruby-version: ${{ inputs.ruby-version }}
       - name: Install dependencies
         run: bundle install
       - id: rubocop
