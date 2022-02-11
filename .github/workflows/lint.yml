@@ -1,0 +1,13 @@
+name: Reusable workflow job
+
+on:
+  push:
+
+jobs:
+  reusable_rubocop_job_dev:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - uses: ./.github/actions/rubocop@main
+        with:
+          username: devUser
