@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: ./.github/actions/rubocop.yml
         with:
           username: devUser
