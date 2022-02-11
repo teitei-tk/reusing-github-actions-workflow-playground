@@ -1,16 +1,12 @@
+# frozen_string_literal: true
+
+#############################
+# Test Hoge
+#############################
 class Hoge
-  public
+  def hoge; end
 
- def public_hoge
- end
+  private
 
-   protected
-
- def public_hoge
- end
-
-private
-
- def public_hoge
- end
+  def _hoge; end
 end
