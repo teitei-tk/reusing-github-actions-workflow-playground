@@ -5,12 +5,6 @@ on:
 
 jobs:
   reusable_rubocop_job_dev:
-    runs-on: ubuntu-latest
-    environment: dev
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: ./.github/actions/rubocop
-        with:
-          username: devUser
+    uses: ./.github/workflows/rubocop.yml
+    with:
+      username: devUser
