@@ -8,3 +8,13 @@ jobs:
     uses: ./.github/workflows/rubocop.yml
     with:
       username: devUser
+  reusable_rubocop_job_stg:
+    needs: reusable_rubocop_job_dev
+    uses: ./.github/workflows/rubocop.yml
+    with:
+      username: stgUser
+  reusable_rubocop_job_prd:
+    needs: reusable_rubocop_job_stg
+    uses: ./.github/workflows/rubocop.yml
+    with:
+      username: prdUser
