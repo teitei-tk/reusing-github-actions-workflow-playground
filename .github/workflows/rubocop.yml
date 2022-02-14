@@ -7,13 +7,14 @@ on:
         required: true
         type: string
       ruby-version:
-        required: false
-        default: "3.0"
+        required: true
         type: string
 
 jobs:
   lint:
     runs-on: ubuntu-latest
+    env:
+      ruby-version: ${{ inputs.ruby-version }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -23,7 +24,11 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ inputs.ruby-version }}
+          ruby-version: ${{ env.ruby-version }}
+      - name: print $envPAT
+        run: echo ${{ inputs.test }}
+      - name: pritn env
+        run: env
       - name: Install dependencies
         run: bundle install
       - id: rubocop

@@ -3,18 +3,22 @@ name: Reusable workflow job
 on:
   push:
 
+env:
+  RUBY_VERSION: 3.0
+
 jobs:
   reusable_rubocop_job_dev:
     uses: ./.github/workflows/rubocop.yml
     with:
       username: devUser
+      ruby-version: "${{ env.RUBY_VERSION }}"
   reusable_rubocop_job_stg:
-    needs: reusable_rubocop_job_dev
     uses: ./.github/workflows/rubocop.yml
     with:
       username: stgUser
+      ruby-version: "3.0"
   reusable_rubocop_job_prd:
-    needs: reusable_rubocop_job_stg
     uses: ./.github/workflows/rubocop.yml
     with:
       username: prdUser
+      ruby-version: ${RUBY_VERSION}
